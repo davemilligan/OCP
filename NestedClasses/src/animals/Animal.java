@@ -87,7 +87,7 @@ public class Animal {
 	 * @author david-milligan
 	 *
 	 */
-	public static class innerStaticClass {
+	public static class InnerStaticClass {
 		private int value = 0;
 	}
 

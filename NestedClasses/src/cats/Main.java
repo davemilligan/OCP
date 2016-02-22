@@ -1,7 +1,8 @@
 package cats;
 
 import animals.Animal;
-import animals.Animal.InnerMe;
+import static animals.Animal.InnerStaticClass;
+
 
 public class Main {
 	public static void main(String[] args) throws Exception {
@@ -17,6 +18,8 @@ public class Main {
 		//  We'll take it for granted that it can see public, but there are alternatives in the way the inner is declared.
 		Animal.InnerMe iMe = animal.new InnerMe(); //  can see public anywhere.
 		iMe.eat();
+		
+		InnerStaticClass isc = new Animal.InnerStaticClass(); //  Simples
 	}
 }
 
