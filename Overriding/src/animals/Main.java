@@ -9,6 +9,19 @@ public class Main {
 		feedAnimal(animal);
 		feedAnimal(horseAsAnimal);
 		feedAnimal(realHorse);
+		
+		//  Hidden static methods and variables are decided at compile time, all other methods are late bound (polymorphic).
+		animal.speak(); // static method in Animal cannot be overridden.
+		horseAsAnimal.speak(); // static method in Animal cannot be overridden.
+		realHorse.speak(); // static method in Horse hides the Animal speak.
+		
+		System.out.println(animal.name);
+		System.out.println(horseAsAnimal.name);
+		System.out.println(realHorse.name);
+		
+		System.out.println(animal.NICKNAME);
+		System.out.println(horseAsAnimal.NICKNAME);
+		System.out.println(realHorse.NICKNAME);
 	}
 
 	/**

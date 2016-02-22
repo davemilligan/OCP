@@ -16,6 +16,14 @@ package animals;
  *
  */
 public class Animal {
+	
+	public String name = "Animal";
+	public final String NICKNAME = "Beasty";
+	
+	static void speak(){
+		System.out.println("Animal speaking");
+	}
+	
 	Dung makeDung() {
 		return new Dung("Squeezing one out from Animal");
 	}

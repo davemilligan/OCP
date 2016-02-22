@@ -18,6 +18,9 @@ package animals;
  */
 public class Horse extends Animal {
 
+	public String name = "Horse";
+	public final String NICKNAME = "geegee";
+	
 	/**
 	 * Note that the overridden method returns an object of type Dung, therefore
 	 * this method MUST return the same type or a sub-type of that class.
@@ -27,5 +30,12 @@ public class Horse extends Animal {
 	 */
 	protected HorseDung makeDung() {
 		return new HorseDung("Squeeeezing one out from Horse");
+	}
+	
+	/**
+	 * Not overriding but hiding, the Horse.speak method hides the Animal.speak method.
+	 */
+	static void speak(){
+		System.out.println("Horse speaking");
 	}
 }
