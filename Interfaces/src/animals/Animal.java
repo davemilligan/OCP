@@ -4,7 +4,7 @@ public class Animal implements Beast, DuplicatedAbstractMethodDefinitions {
 	
 	//  Inner interfaces can be private, but can only be referenced within the outer class.
 	private interface GodThisGetsComplex {
-		void whyOhWhy();
+		void whyOhWhyWouldYouDoThis();
 	}
 	
 	public final static String DAMIAN = "ANIMAL_DAMIAN";
