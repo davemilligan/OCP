@@ -22,9 +22,11 @@ public class Main {
 		Bat b = new Bat();
 		String str = "I'm a String";
 		int s = 0;
-		if (str instanceof Object) System.out.format("\"%s\" is an Object%n", str);
-		//if (str instanceof Date) System.out.println("str is never, and can never be a Date, so wont compile.");
-		
+		if (str instanceof Object)
+			System.out.format("\"%s\" is an Object%n", str);
+		// if (str instanceof Date) System.out.println("str is never, and can
+		// never be a Date, so wont compile.");
+
 		// if (s instanceof java.lang.String) System.out.println("s is a
 		// String"); //can't be done, s is not a String.
 		if (f instanceof Flyer)
@@ -38,5 +40,11 @@ public class Main {
 												// is an instance of an
 												// Interface, unless that object
 												// was declared as final.
+
+		if (null instanceof Flyer)
+			System.out.println("Impossible but valid");
+		Object o = new Object();
+		if (o instanceof Bat)
+			System.out.println("An object reference could point to anything.");
 	}
 }
