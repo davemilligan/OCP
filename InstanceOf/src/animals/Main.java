@@ -1,6 +1,7 @@
 package animals;
 
 import java.io.IOException;
+import java.util.Date;
 
 interface Flyer {
 }
@@ -39,7 +40,19 @@ public class Main {
 			System.out.println("b is a Bird"); // Can always check if an object
 												// is an instance of an
 												// Interface, unless that object
-												// was declared as final.
+												// was declared as final, even
+												// though we know this b is not
+												// a Flyer.
+
+		if (f instanceof Date)
+			System.out.println("f is a Date"); // can always check if an
+												// interface reference is an
+												// instance of a non final
+												// object.
+
+		// if (f instanceof String) // wont wash as String is final
+		// String s;
+		// if (s instanceof Flyer) // wont wash as String is final
 
 		if (null instanceof Flyer)
 			System.out.println("Impossible but valid");

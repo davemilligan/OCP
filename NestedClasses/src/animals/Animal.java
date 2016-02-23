@@ -16,7 +16,7 @@ public class Animal {
 		Animal animal = new Animal();
 		// Just like private members, the private inner class can be seen inside
 		// the class.  But needs an instance of the outer class to instantiate it.
-		//InnerAnimal badInner = new InnerAnimal(); //  Will not wash
+		//InnerAnimal badInner = new InnerAnimal(); //  Will not wash, needs an instance.
 		
 		
 		InnerAnimal ianimal = animal.new InnerAnimal();
@@ -92,7 +92,7 @@ public class Animal {
 	}
 
 	/**
-	 * Inner class can have any visibility. Can extend a class or implement
+	 * Member Inner class can have any visibility. Can extend a class or implement
 	 * interfaces. Can be final or abstract. Can access outer class members,
 	 * including private members. Can NOT have static methods or variables.
 	 * 
