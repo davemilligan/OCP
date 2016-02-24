@@ -13,7 +13,6 @@ public class AnimalAcceptingDefaultInterfaceMethod implements Beast {
 
 	}
 
-	@Override
 	public void eat() throws ChokingOnMeDinnerException {
 		// TODO Auto-generated method stub
 

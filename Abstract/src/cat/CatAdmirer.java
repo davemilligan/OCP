@@ -16,4 +16,10 @@ public class CatAdmirer extends BigCat {
 		return "I like cats";
 	}
 
+	@Override
+	protected void allowed() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

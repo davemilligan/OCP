@@ -46,7 +46,7 @@ public interface Beast extends CagedBeast {
 
 	// so this is the same thing, though a different method.
 	void dung();
-
+	
 	/*
 	 * This method is NOT inherited by implementing classes, thus it CANNOT be
 	 * overridden and can ONLY be called with an EXPLICIT reference to the

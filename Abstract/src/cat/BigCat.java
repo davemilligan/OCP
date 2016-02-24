@@ -4,9 +4,13 @@ public abstract class BigCat {
 	//  can be accessed anywhere
 	public String name = "Cat";  //  Not static or final by default like interfaces.	
 	
-	//  could have been left out altogether.
+	//  could have been left out altogether, public by default.
 	abstract String speak();
 
+	protected abstract void allowed();
+		
+	//private abstract void notallowed();
+	
 	//  Could define this with exception, subclass can throw subclass, same or none.
 //	abstract String speak() throws Exception;
 	
@@ -20,7 +24,8 @@ public abstract class BigCat {
 //		System.out.println("Not valid speak");
 //	}
 	
-	//  not valid, no implementation.
+	//  not valid, not  abstract and no implementation.
 //	String speak();
+
 	
 }
