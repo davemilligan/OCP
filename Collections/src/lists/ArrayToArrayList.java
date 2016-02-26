@@ -17,11 +17,21 @@ public class ArrayToArrayList {
 	public static void main(String[] args) {
 		arraysAsListGotcha();
 		toGetAnUnbackedArrayList();
+		removingItems();
+	}
+
+	private static void removingItems() {
+		List<Integer> intList = new ArrayList<>(Arrays.asList(intArray));
+		System.out.println("List before removing " + intList);
+		intList.remove(1);
+		System.out.println("List after removing index 1 " + intList);
+		intList.remove(new Integer(999));
+		System.out.println("List after removing an object" + intList);
 	}
 
 	/**
 	 * This shows that 'Arrays.asList' returns a special fixed size ArrayList
-	 * defined as a static nested class in the Arrays class.
+	 * defined as a private static nested ArrayList in the Arrays class.
 	 * 
 	 * The new ArrayList is backed by the array and changes to the new ArrayList
 	 * are reflected in the original array.
@@ -30,12 +40,12 @@ public class ArrayToArrayList {
 		List<Integer> intList = Arrays.asList(intArray);
 		System.out.format("The array object %s%n", Arrays.toString(intArray));
 		intList.set(0, 999);
-		System.out.format("The array object %s%n", Arrays.toString(intArray));
+		System.out.format("The array object updated via the ArrayList %s%n", Arrays.toString(intArray));
 		System.out.println(intList.getClass().getName());
 
 		// Here the toArray returns an Integer Array, as the backing class is
 		// the array we started with.
-		System.out.format("The intList.toArray() %s%n", intList.toArray().getClass().getName());
+		System.out.format("intList.toArray() give us a %s%n", intList.toArray().getClass().getName());
 		if (!(intList instanceof ArrayList))
 			System.out.println("See its not an ArrayList");
 
@@ -43,6 +53,7 @@ public class ArrayToArrayList {
 		System.out.format("The array object %s%n", Arrays.toString(intArray));
 
 		Integer[] andBackAgainByCasting = (Integer[]) intList.toArray();
+		System.out.println(intArray == andBackAgainByCasting);
 		System.out.format("The array object %s%n", Arrays.toString(intArray));
 	}
 
