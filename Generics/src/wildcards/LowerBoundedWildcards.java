@@ -16,39 +16,28 @@ import java.util.List;
  *
  */
 public class LowerBoundedWildcards {
-	// Can't be done, a List of Integers can't be assigned to a reference to a
-	// List of Numbers.
-	// static List<Number> intList = new ArrayList<Integer>();
-
-	// But we can...though the list is now logically immutable, we cannot add
-	// Objects.
-	// static List<? extends Number> intList = new ArrayList<>(Arrays.asList(10,
-	// 20, 30, 40));
-
-	// If we want a list that is mutable then we use a LowerBounded wild card
-	// that allows a List the same class or a List of a superclass to be
-	// assigned.
-	// That way we can be sure that the list will allow us to insert a
-	// particular item.
-	static List<? super Integer> exampleList = new ArrayList<Integer>();
-
-	// This is also a legal declaration, but this list can only accept an object
-	// that is an object that passes the isA test on the least specific
-	// subclass.
-	static List<? super Integer> exampleList2 = new ArrayList<Number>();
-
-	static List<Integer> intList = new ArrayList<Integer>();
-
-	static List<Number> numList = new ArrayList<Number>();
+	
+	static List<? super Integer> exampleList;
+	static List<Integer> intList;
+	static List<Number> numList;
 
 	static List<Object> objectList = new ArrayList<Object>();
 
 	public static void main(String[] args) {
+		//  exampleList can reference any superclass of Integer
+		exampleList = new ArrayList<Number>();
+		exampleList = new ArrayList<Object>();
+		//  but not a sibling class
+		//exampleList = new ArrayList<Double>();
+		
+		intList = new ArrayList<Integer>();
 		intList.add(100); //  add a int to List<Integer>, boxing it.
 		addInteger(intList); //  Now add Integer
 		
+		numList = new ArrayList<Number>();
 		numList.add(5555L);  // add a Long to List<Number>, again boxing it.
 		addInteger(numList); //  Now add Integer
+		
 		objectList.add(LocalDate.now()); //  add a LocalDate to List<Object>
 		addInteger(objectList); //  Now add Integer
 	}
