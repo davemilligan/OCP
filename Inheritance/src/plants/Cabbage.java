@@ -16,9 +16,9 @@ import animals.Horse;
 public class Cabbage extends Animal {
 
 	public Cabbage() throws IOException {
+
 		roar();
-		// prowl();
-		
+
 		Animal a = new Animal();
 //		a.roar();
 //		a.prowl();

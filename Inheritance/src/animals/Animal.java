@@ -8,6 +8,10 @@ import java.io.IOException;
  *
  */
 public class Animal {
+	int packageVar = 1;
+	private int privateVar = 2;
+	protected int protectedVar = 3;
+	public int publicVar = 4;
 	
 	public Animal() throws IOException {
 		System.out.println("Constructor called on Animal.");
