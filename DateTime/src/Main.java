@@ -4,6 +4,11 @@ import java.time.LocalTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -12,7 +17,14 @@ public class Main {
 		System.out.println(LocalTime.now());
 		System.out.println(LocalDateTime.now());
 
+
 		LocalDate myBirthday = LocalDate.of(1964, 4, 30);
+		LocalDate dayBeforeMBirthday = myBirthday.plus(Period.ofDays(-1));
+		LocalDate dayAfterMBirthday = myBirthday.plus(Period.ofDays(1));
+		boolean isBetween = !myBirthday.isBefore(dayBeforeMBirthday) && !myBirthday.isAfter(dayAfterMBirthday);
+		System.out.println(String.format("My birthday is between %s  and  %s %s", dayBeforeMBirthday, dayAfterMBirthday, isBetween));
+
+
 		LocalTime rightNow = LocalTime.of(12, 30, 30);
 		LocalDateTime dateTime = LocalDateTime.of(2015, 4, 30, 12, 30, 30);
 
@@ -110,4 +122,92 @@ public class Main {
 
 	}
 
+    public static List<Product> getProductsSellingOver(
+            List<Sale> sales,
+            LocalDate startDate,
+            LocalDate endDate,
+            int boundary) {
+        final Map<Integer, Integer> salesPerProduct = new HashMap<>();
+
+        getSalesBetweenDates(
+                sales,
+                startDate,
+                endDate).forEach(s -> {
+            int currentTotal = (salesPerProduct.containsKey(s.pid)) ? salesPerProduct.get(s.pid) : 0;
+            salesPerProduct.put(s.pid, currentTotal + s.volume);
+        });
+
+        final List<Integer> pids = new ArrayList<>();
+        salesPerProduct.keySet().stream().forEach(pid -> {
+            if (salesPerProduct.get(pid) > 200) {
+                pids.add(pid);
+            }
+        });
+        return pids
+                .stream()
+                .map(pid -> getProduct(pid))
+                .collect(Collectors.toList());
+    }
+
+    public static int getTotalsBetweenDates(
+            List<Sale> sales,
+            LocalDate startDate,
+            LocalDate endDate) {
+        return getSalesBetweenDates(sales, startDate, endDate)
+                .stream()
+                .map(s -> s.volume)
+                .reduce(0, (total, volume) -> {
+            return total += volume;
+        });
+    }
+
+    public static int getSalesTotalsOnDate(List<Sale> sales, LocalDate date) {
+        return getSalesOnDate(sales, date)
+                .stream()
+                .map(s -> s.volume)
+                .reduce(0, (total, volume) -> {
+            return total += volume;
+        });
+    }
+
+    public static List<Sale> getSalesBetweenDates(
+            List<Sale> sales,
+            LocalDate startDate,
+            LocalDate endDate) {
+        return sales
+                .stream()
+                .filter(s-> s.date.isAfter(startDate) && s.date.isBefore(endDate))
+                .collect(Collectors.toList());
+    }
+
+    public static List<Sale> getSalesOnDate(List<Sale> sales, LocalDate date) {
+        return sales
+                .stream()
+                .filter(s-> s.date.equals(date))
+                .collect(Collectors.toList());
+    }
+
+	public static int getSales(List<Sale> sales) {
+	    return sales.stream().map(s -> s.volume).reduce(0, (total, volume) -> {
+	        return total += volume;
+        });
+    }
+
+    //  Placeholder
+    public static Product getProduct(int pid) {
+	    return new Product();
+    }
+
+}
+
+class Sale {
+    int pid;
+    int volume;
+    LocalDate date;
+}
+
+class Product {
+    int id;
+    double price;
+    String name;
 }
